@@ -7,6 +7,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
 import SearchPage from "../pages/SearchPage/SearchPage";
+import BlogsPage from "../pages/BlogsPage/BlogsPage";
 
 
   export const router = createBrowserRouter([
@@ -30,6 +31,10 @@ import SearchPage from "../pages/SearchPage/SearchPage";
         {
             path: 'searchPage',
             element: <SearchPage></SearchPage>
+        },
+        {
+            path: 'blog',
+            element:<BlogsPage></BlogsPage>
         }
       ]
     },
