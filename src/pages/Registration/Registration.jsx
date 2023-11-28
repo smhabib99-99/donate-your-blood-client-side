@@ -6,6 +6,9 @@ const Registration = () => {
 
         const [districts, setDistricts] = useState([]);
         const [selectedDistrict, setSelectedDistrict] = useState('');
+
+        const[upazilas, setUpazilas] = useState([]);
+        const [selectedUpazila, setSelectedUpazila] = useState('');
     
         useEffect(() => {
             fetch("/districts.json")
@@ -17,6 +20,18 @@ const Registration = () => {
         const handleDistrictChange = (e) => {
             setSelectedDistrict(e.target.value);
         };
+
+
+        useEffect(()=>{
+            fetch("/upazilas.json")
+            .then(res=>res.json())
+            .then(data=>setUpazilas(data))
+            .catch(err=>console.error("Error in Upazilas:",err));
+        },[]);
+
+        const handleUpazilaChange = (e) =>{
+            setSelectedUpazila(e.target.value);
+        }
 
 
 
@@ -80,19 +95,29 @@ const Registration = () => {
                         <label className="label">
                             <span className="label-text">District</span>
                         </label>
-                        <select
-                            name="district"
-                            className="select select-bordered"
-                            value={selectedDistrict}
-                            onChange={handleDistrictChange}
-                            required
-                        >
+                        <select name="district" className="select select-bordered" value={selectedDistrict} onChange={handleDistrictChange} required>
                             <option value="">Select District</option>
                             {districts.map((district) => (
                                 <option key={district.id} value={district.name}>
                                     {district.name}
                                 </option>
                             ))}
+                        </select>
+                    </div>
+
+                    {/* Upazila */}
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Upazila</span>
+                        </label>
+                        <select name="upazila" className="select select-bordered" value={selectedUpazila} onChange={handleUpazilaChange} required >
+                            <option value="">Select Upazila</option>
+                            {
+                                upazilas.map((upazila) =>(<option key={upazila.id} value={upazila.name}>
+                                    {upazila.name}
+                                </option>))
+                            }
+
                         </select>
                     </div>
 
@@ -105,6 +130,9 @@ const Registration = () => {
                                 <input type="password" name="password" placeholder="password" className="input input-bordered" required />
                             </div>
                           
+                          {/* password */}
+                          
+
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Register</button>
                             </div>
