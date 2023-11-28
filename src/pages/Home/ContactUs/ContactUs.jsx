@@ -14,7 +14,7 @@ const ContactUs = () => {
                 <div className="flex">
 
                     <div className="flex w-1/2 items-center bg-blue-300 opacity-70">
-                    <form className=" mx-auto border shadow-md">
+                    <form className=" mx-auto shadow-md">
                         <div >
                             <div className=" md:w-1/2 px-3 mb-6 md:mb-0">
                                 <label className=" min-w-full  uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
