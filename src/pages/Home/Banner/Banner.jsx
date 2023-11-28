@@ -11,7 +11,9 @@ const Banner = () => {
                 <div className="absolute top-72 right-4 left-10 z-10">
                   
                     <div className="flex justify-center">
+                    <Link to='/searchPage'>
                     <button className="bg-red-400 rounded-md text-white font-bold text-xl p-2">Search Donors</button>
+                    </Link>
                     </div>
                     <div className="flex justify-center">
                         <Link to='/registration'>
