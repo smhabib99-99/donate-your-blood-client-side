@@ -4,14 +4,10 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
 
     const navButtons = <>
-        <li><Link to='/'>Home</Link></li>
+        <li className=""><Link to='/'>Home</Link></li>
         <li><Link to='/login'>Login</Link></li>
         <li><Link to='/registration'>Registration</Link></li>
         <li><Link to='/donationRequest'>Donation Requests</Link></li>
-        {/* <li>
-            <a >Item 2</a>
-        </li>
-        <li><a>Item 3</a></li> */}
     </>
     return (
         <>
@@ -32,7 +28,7 @@ const Navbar = () => {
                         </div>
 
                     </div>
-                    <a className="btn btn-ghost text-xl">Donate Your Blood</a>
+                    <a className="btn btn-ghost text-2xl">Donate Your Blood</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
