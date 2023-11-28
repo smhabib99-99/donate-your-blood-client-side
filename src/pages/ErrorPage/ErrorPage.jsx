@@ -1,9 +1,13 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 
 const ErrorPage = () => {
     return (
         <div className="h-screen flex justify-center items-center">
+              <Helmet>
+                <title>Donate | Error </title>
+            </Helmet>
             <div className="bg-red-400 py-3 px-3 rounded-md text-white mx-5" >
                 <div className="text-5xl text-center">Opps! <br /> Error Occured </div>
             </div>

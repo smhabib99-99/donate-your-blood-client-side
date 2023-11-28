@@ -17,7 +17,7 @@ const DonationHighlights = () => {
                 </div>
                 <div className="bg-sky-200 p-6 rounded-md">
                     <img className="h-44" src="/highlights3.webp" alt="" />
-                    <h2 className="text-2xl my-2 ">Are You giving Type</h2>
+                    <h2 className="text-2xl my-2 ">Are You giving Type?</h2>
                     <p>We are celebrating our amazing donors and living the nations giving types to donate. </p>
                 </div>
             </div>
