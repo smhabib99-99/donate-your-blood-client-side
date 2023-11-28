@@ -4,40 +4,68 @@ import { Helmet } from "react-helmet-async";
 
 const Registration = () => {
 
-        const [districts, setDistricts] = useState([]);
-        const [selectedDistrict, setSelectedDistrict] = useState('');
+    const [districts, setDistricts] = useState([]);
+    const [selectedDistrict, setSelectedDistrict] = useState('');
 
-        const[upazilas, setUpazilas] = useState([]);
-        const [selectedUpazila, setSelectedUpazila] = useState('');
-    
-        useEffect(() => {
-            fetch("/districts.json")
-                .then(response => response.json())
-                .then(data => setDistricts(data))
-                .catch(error => console.error('Error fetching districts:', error));
-        }, []);
-    
-        const handleDistrictChange = (e) => {
-            setSelectedDistrict(e.target.value);
-        };
+    const [upazilas, setUpazilas] = useState([]);
+    const [selectedUpazila, setSelectedUpazila] = useState('');
+
+    useEffect(() => {
+        fetch("/districts.json")
+            .then(response => response.json())
+            .then(data => setDistricts(data))
+            .catch(error => console.error('Error fetching districts:', error));
+    }, []);
+
+    const handleDistrictChange = (e) => {
+        setSelectedDistrict(e.target.value);
+    };
 
 
-        useEffect(()=>{
-            fetch("/upazilas.json")
-            .then(res=>res.json())
-            .then(data=>setUpazilas(data))
-            .catch(err=>console.error("Error in Upazilas:",err));
-        },[]);
+    useEffect(() => {
+        fetch("/upazilas.json")
+            .then(res => res.json())
+            .then(data => setUpazilas(data))
+            .catch(err => console.error("Error in Upazilas:", err));
+    }, []);
 
-        const handleUpazilaChange = (e) =>{
-            setSelectedUpazila(e.target.value);
+    const handleUpazilaChange = (e) => {
+        setSelectedUpazila(e.target.value);
+    }
+
+
+    const [formData, setFormData] = useState({
+        password: '',
+        confirmPassword: ''
+    });
+
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const name = e.target.name.value;
+        const email = e.target.email.value;
+        const bloodGroup = e.target.bloodGroup.value;
+        const district = e.target.district.value;
+        const upazila = e.target.upazila.value;
+        const password = e.target.password.value;
+        const confirmPassword = e.target.confirmPassword.value;
+        if (formData.password !== formData.confirmPassword) {
+            alert("Passwords do not match");
+            return;
         }
+        console.log("Form Data:", formData, name, email, bloodGroup, district, upazila, password, confirmPassword);
+    };
 
 
 
     return (
         <div>
-              <Helmet>
+            <Helmet>
                 <title>Donate | Registration </title>
             </Helmet>
 
@@ -47,7 +75,7 @@ const Registration = () => {
                         <h1 className="text-5xl font-bold">Please Register!</h1>
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <form className="card-body" >
+                        <form className="card-body" onSubmit={handleSubmit} >
 
                             <div className="form-control">
                                 <label className="label">
@@ -62,7 +90,7 @@ const Registration = () => {
                                 <input type="email" name="email" placeholder="email" className="input input-bordered" required />
                             </div>
 
-                             {/* Avatar */}
+                            {/* Avatar */}
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Avatar</span>
@@ -92,46 +120,68 @@ const Registration = () => {
 
                             {/* Districts */}
                             <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">District</span>
-                        </label>
-                        <select name="district" className="select select-bordered" value={selectedDistrict} onChange={handleDistrictChange} required>
-                            <option value="">Select District</option>
-                            {districts.map((district) => (
-                                <option key={district.id} value={district.name}>
-                                    {district.name}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
+                                <label className="label">
+                                    <span className="label-text">District</span>
+                                </label>
+                                <select name="district" className="select select-bordered" value={selectedDistrict} onChange={handleDistrictChange} required>
+                                    <option value="">Select District</option>
+                                    {districts.map((district) => (
+                                        <option key={district.id} value={district.name}>
+                                            {district.name}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
 
-                    {/* Upazila */}
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Upazila</span>
-                        </label>
-                        <select name="upazila" className="select select-bordered" value={selectedUpazila} onChange={handleUpazilaChange} required >
-                            <option value="">Select Upazila</option>
-                            {
-                                upazilas.map((upazila) =>(<option key={upazila.id} value={upazila.name}>
-                                    {upazila.name}
-                                </option>))
-                            }
+                            {/* Upazila */}
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Upazila</span>
+                                </label>
+                                <select name="upazila" className="select select-bordered" value={selectedUpazila} onChange={handleUpazilaChange} required >
+                                    <option value="">Select Upazila</option>
+                                    {
+                                        upazilas.map((upazila) => (<option key={upazila.id} value={upazila.name}>
+                                            {upazila.name}
+                                        </option>))
+                                    }
 
-                        </select>
-                    </div>
+                                </select>
+                            </div>
 
+
+                            {/* password */}
 
 
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+                                <input
+                                    type="password"
+                                    name="password"
+                                    placeholder="Password"
+                                    className="input input-bordered"
+                                    value={formData.password}
+                                    onChange={handleChange}
+                                    required
+                                />
                             </div>
-                          
-                          {/* password */}
-                          
+
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Confirm Password</span>
+                                </label>
+                                <input
+                                    type="password"
+                                    name="confirmPassword"
+                                    placeholder="Confirm Password"
+                                    className="input input-bordered"
+                                    value={formData.confirmPassword}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
 
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Register</button>
@@ -140,7 +190,7 @@ const Registration = () => {
                     </div>
                 </div>
             </div>
-            
+
         </div>
     );
 };
