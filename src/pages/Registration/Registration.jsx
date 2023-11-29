@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
@@ -212,6 +213,9 @@ const Registration = () => {
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Register</button>
                             </div>
+                            <p>
+                                <span>Already Have Account?</span> <Link to="/login"><button className="btn btn-link">Please Login</button></Link>
+                            </p>
                         </form>
                     </div>
                 </div>

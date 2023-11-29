@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import BlogsPageCard from "./BlogsPageCard";
+import { Helmet } from "react-helmet-async";
 // import BlogsPageCard from "./BlogsPageCard";
 
 
@@ -9,6 +10,9 @@ const BlogsPage = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Donate | Blogs </title>
+            </Helmet>
             <h2 className="text-3xl font-medium text-center bg-sky-400 py-4 text-white my-3">Blogs About Blood Donations</h2>
 
            <div className="grid md:grid-cols-3 gap-6 p-5">
