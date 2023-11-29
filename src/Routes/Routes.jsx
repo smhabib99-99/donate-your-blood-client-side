@@ -10,6 +10,8 @@ import SearchPage from "../pages/SearchPage/SearchPage";
 import BlogsPage from "../pages/BlogsPage/BlogsPage";
 import PrivateRoute from "./PrivateRoute";
 import Secret from "../pages/Home/Home/Shared/Secret/Secret";
+import Dashboard from "../Layout/Dashboard";
+import MyDonationRequests from "../pages/Dashboard/MyDonationRequests/MyDonationRequests";
 
 
   export const router = createBrowserRouter([
@@ -44,5 +46,15 @@ import Secret from "../pages/Home/Home/Shared/Secret/Secret";
             element: <PrivateRoute><Secret></Secret></PrivateRoute>
         }
       ]
+    },
+    {
+        path:'dashboard',
+        element:<Dashboard></Dashboard>,
+        children: [
+            {
+                path: 'my-donation-requests',
+                element: <MyDonationRequests></MyDonationRequests>
+            }
+        ]
     },
   ]);
