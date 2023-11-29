@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../providers/AuthProvider";
 
 
 const Registration = () => {
@@ -11,6 +12,8 @@ const Registration = () => {
 
     const [upazilas, setUpazilas] = useState([]);
     const [selectedUpazila, setSelectedUpazila] = useState('');
+
+    const {createUser} = useContext(AuthContext);
 
     useEffect(() => {
         fetch("/districts.json")
@@ -56,6 +59,14 @@ const Registration = () => {
         const upazila = e.target.upazila.value;
         const password = e.target.password.value;
         const confirmPassword = e.target.confirmPassword.value;
+
+        createUser(email, password)
+        .then(result => {
+            console.log(result.user);
+        })
+        .catch(error => {
+            console.error(error);
+        })
         // if(formData.password===formData.confirmPassword){
         //     Swal.fire({
         //         position: "center",
