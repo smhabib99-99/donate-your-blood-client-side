@@ -8,6 +8,8 @@ import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
 import SearchPage from "../pages/SearchPage/SearchPage";
 import BlogsPage from "../pages/BlogsPage/BlogsPage";
+import PrivateRoute from "./PrivateRoute";
+import Secret from "../pages/Home/Home/Shared/Secret/Secret";
 
 
   export const router = createBrowserRouter([
@@ -36,6 +38,10 @@ import BlogsPage from "../pages/BlogsPage/BlogsPage";
             path: 'blogs',
             element:<BlogsPage></BlogsPage>,
             loader: () =>fetch('/blogs.json')
+        },
+        {
+            path: 'secret',
+            element: <PrivateRoute><Secret></Secret></PrivateRoute>
         }
       ]
     },
