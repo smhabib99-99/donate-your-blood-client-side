@@ -34,7 +34,8 @@ import BlogsPage from "../pages/BlogsPage/BlogsPage";
         },
         {
             path: 'blog',
-            element:<BlogsPage></BlogsPage>
+            element:<BlogsPage></BlogsPage>,
+            loader: () =>fetch('/blogs.json')
         }
       ]
     },

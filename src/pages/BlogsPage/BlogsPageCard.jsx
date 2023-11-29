@@ -1,0 +1,28 @@
+import PropTypes from 'prop-types';
+
+const BlogsPageCard = ({blog}) => {
+
+    const {title,author,date,content} = blog||{};
+
+    return (
+        <div className="">
+            <div className="card w-96 bg-primary text-primary-content">
+                <div className="card-body">
+                    <h2 className="card-title">{title}</h2>
+
+                    <p>{content}</p>
+                    <div className="card-actions justify-end">
+                    {/* <span>{date}</span> */}
+                        <p className="btn"> <span>Posted: {date}</span>By: {author}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default BlogsPageCard;
+
+BlogsPageCard.propTypes = {
+    blog:PropTypes.object,
+};
