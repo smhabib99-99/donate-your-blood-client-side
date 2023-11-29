@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
 
 
 const Registration = () => {
@@ -54,11 +55,36 @@ const Registration = () => {
         const upazila = e.target.upazila.value;
         const password = e.target.password.value;
         const confirmPassword = e.target.confirmPassword.value;
+        // if(formData.password===formData.confirmPassword){
+        //     Swal.fire({
+        //         position: "center",
+        //         icon: "success",
+        //         title: "Registration as a Donor is Successful!",
+        //         showConfirmButton: false,
+        //         timer: 1500
+        //       });
+        //     return;
+        // }
+        console.log(formData, name, email, bloodGroup, district, upazila, password, confirmPassword);
         if (formData.password !== formData.confirmPassword) {
-            alert("Passwords do not match");
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Password Doesn't match!",
+              });
             return;
         }
-        console.log("Form Data:", formData, name, email, bloodGroup, district, upazila, password, confirmPassword);
+        console.log(formData, name, email, bloodGroup, district, upazila, password, confirmPassword);
+        if(formData.password===formData.confirmPassword){
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Registration as a Donor is Successful!",
+                showConfirmButton: false,
+                timer: 1500
+              });
+            return;
+        }
     };
 
 
@@ -90,7 +116,7 @@ const Registration = () => {
                                 <input type="email" name="email" placeholder="email" className="input input-bordered" required />
                             </div>
 
-                            {/* Avatar */}
+
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Avatar</span>
@@ -99,7 +125,7 @@ const Registration = () => {
                             </div>
 
 
-                            {/* Blood Group */}
+
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Blood Group</span>
@@ -118,7 +144,7 @@ const Registration = () => {
                             </div>
 
 
-                            {/* Districts */}
+
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">District</span>
@@ -133,7 +159,7 @@ const Registration = () => {
                                 </select>
                             </div>
 
-                            {/* Upazila */}
+
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Upazila</span>
@@ -150,7 +176,7 @@ const Registration = () => {
                             </div>
 
 
-                            {/* password */}
+
 
 
                             <div className="form-control">

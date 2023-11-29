@@ -6,7 +6,7 @@ const BlogsPageCard = ({blog}) => {
 
     return (
         <div className="">
-            <div className="card w-96 bg-primary text-primary-content">
+            <div className="card w-96 bg-sky-300 shadow-xl">
                 <div className="card-body">
                     <h2 className="card-title">{title}</h2>
 

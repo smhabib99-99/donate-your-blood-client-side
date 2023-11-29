@@ -33,7 +33,7 @@ import BlogsPage from "../pages/BlogsPage/BlogsPage";
             element: <SearchPage></SearchPage>
         },
         {
-            path: 'blog',
+            path: 'blogs',
             element:<BlogsPage></BlogsPage>,
             loader: () =>fetch('/blogs.json')
         }
