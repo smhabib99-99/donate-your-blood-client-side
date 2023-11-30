@@ -46,7 +46,12 @@ const Dashboard = () => {
                 <div className="divider"></div>
 
                     </>:<>
-                    <ul className="menu btn my-3 p-4">
+           
+
+                    </>
+                }
+
+<ul className="menu btn my-3 p-4">
                     <li><NavLink to='/dashboard'>
                         <FaHome></FaHome>
                         Donor</NavLink></li>
@@ -97,9 +102,6 @@ const Dashboard = () => {
                         <FaHome></FaHome>
                         Home</NavLink></li>
                 </ul>
-
-                    </>
-                }
 
 
 

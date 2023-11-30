@@ -20,7 +20,7 @@ const Registration = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("/districts.json")
+        fetch("districts.json")
             .then(response => response.json())
             .then(data => setDistricts(data))
             .catch(error => console.error('Error fetching districts:', error));

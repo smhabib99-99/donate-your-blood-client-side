@@ -13,6 +13,8 @@ import Secret from "../pages/Home/Home/Shared/Secret/Secret";
 import Dashboard from "../Layout/Dashboard";
 import MyDonationRequests from "../pages/Dashboard/MyDonationRequests/MyDonationRequests";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
+import Districts from "../pages/Districts/Districts";
+import Funds from "../pages/Funds/Funds";
 
 
   export const router = createBrowserRouter([
@@ -45,6 +47,10 @@ import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
         {
             path: 'secret',
             element: <PrivateRoute><Secret></Secret></PrivateRoute>
+        },
+        {
+            path:'districts',
+            element:<Districts></Districts>
         }
       ]
     },
@@ -59,6 +65,10 @@ import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
             {
                 path:'users',
                 element:<AllUsers></AllUsers>
+            },
+            {
+                path:'funds',
+                element:<Funds></Funds>
             }
         ]
     },

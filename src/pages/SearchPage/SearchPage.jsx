@@ -7,7 +7,7 @@ const SearchPage = () => {
               <Helmet>
                 <title>Donate | Search </title>
             </Helmet>
-            <h2>This is search page.</h2>
+            <h2 className="text-center text-2xl bg-sky-400 py-3 my-4">Search Here</h2>
         </div>
     );
 };
