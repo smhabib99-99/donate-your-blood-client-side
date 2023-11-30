@@ -28,7 +28,7 @@ const Navbar = () => {
         <li className=""><Link to='/'>Home</Link></li>
         <li><Link to='/login'>Login</Link></li>
         <li><Link to='/registration'>Registration</Link></li>
-        <li className=""><Link to='dashboard/my-donation-requests'>Donation Requests</Link></li>
+        <li className=""><Link to='dashboard/my-donation-requests'>Dashboard</Link></li>
         <li><Link to='/blogs'>Blogs</Link></li>
     </>
     return (

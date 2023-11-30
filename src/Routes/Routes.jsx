@@ -12,6 +12,7 @@ import PrivateRoute from "./PrivateRoute";
 import Secret from "../pages/Home/Home/Shared/Secret/Secret";
 import Dashboard from "../Layout/Dashboard";
 import MyDonationRequests from "../pages/Dashboard/MyDonationRequests/MyDonationRequests";
+import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 
 
   export const router = createBrowserRouter([
@@ -54,6 +55,10 @@ import MyDonationRequests from "../pages/Dashboard/MyDonationRequests/MyDonation
             {
                 path: 'my-donation-requests',
                 element: <MyDonationRequests></MyDonationRequests>
+            },
+            {
+                path:'users',
+                element:<AllUsers></AllUsers>
             }
         ]
     },
