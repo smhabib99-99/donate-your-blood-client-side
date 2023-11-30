@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
-// import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 
 const Registration = () => {
 
-    // const axiosPublic = useAxiosPublic();
+    const axiosPublic = useAxiosPublic();
 
     const [districts, setDistricts] = useState([]);
     const [selectedDistrict, setSelectedDistrict] = useState('');
@@ -17,6 +17,7 @@ const Registration = () => {
     const [selectedUpazila, setSelectedUpazila] = useState('');
 
     const {createUser, updateUserProfile} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch("/districts.json")
@@ -68,8 +69,24 @@ const Registration = () => {
         .then(result => {
             console.log(result.user);
             updateUserProfile(name,photo)
+
             .then(() =>{
+
+                // create user entry in data base
+                const userInfo = {
+                    name:name,
+                    email:email
+                }
+                axiosPublic.post('/users',userInfo)
+                .then(res => {
+                    if(res?.data?.insertedId){
+                        console.log('user added to the database')
+                    }
+
+                })
+
                 console.log('user profile updated')
+                navigate('/');
             })
             .catch(error => console.log(error))
         })
