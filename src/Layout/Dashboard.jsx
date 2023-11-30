@@ -76,6 +76,15 @@ const Dashboard = () => {
                         Content Management</NavLink></li>
                 </ul>
 
+                <div className="divider"></div>
+
+
+                <ul className="menu btn my-3 p-4">
+                    <li><NavLink to='/'>
+                        <FaHome></FaHome>
+                        Home</NavLink></li>
+                </ul>
+
             </div>
             <div className="flex-1">
                 <Outlet></Outlet>

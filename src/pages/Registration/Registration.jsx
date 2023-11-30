@@ -3,9 +3,12 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
+// import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 
 const Registration = () => {
+
+    // const axiosPublic = useAxiosPublic();
 
     const [districts, setDistricts] = useState([]);
     const [selectedDistrict, setSelectedDistrict] = useState('');
@@ -13,7 +16,7 @@ const Registration = () => {
     const [upazilas, setUpazilas] = useState([]);
     const [selectedUpazila, setSelectedUpazila] = useState('');
 
-    const {createUser} = useContext(AuthContext);
+    const {createUser, updateUserProfile} = useContext(AuthContext);
 
     useEffect(() => {
         fetch("/districts.json")
@@ -54,6 +57,7 @@ const Registration = () => {
         e.preventDefault();
         const name = e.target.name.value;
         const email = e.target.email.value;
+        const photo = e.target.photo.value;
         const bloodGroup = e.target.bloodGroup.value;
         const district = e.target.district.value;
         const upazila = e.target.upazila.value;
@@ -63,6 +67,11 @@ const Registration = () => {
         createUser(email, password)
         .then(result => {
             console.log(result.user);
+            updateUserProfile(name,photo)
+            .then(() =>{
+                console.log('user profile updated')
+            })
+            .catch(error => console.log(error))
         })
         .catch(error => {
             console.error(error);
@@ -77,7 +86,7 @@ const Registration = () => {
         //       });
         //     return;
         // }
-        console.log(formData, name, email, bloodGroup, district, upazila, password, confirmPassword);
+        console.log(formData, name, email, photo,bloodGroup, district, upazila, password, confirmPassword);
         if (formData.password !== formData.confirmPassword) {
             Swal.fire({
                 icon: "error",
