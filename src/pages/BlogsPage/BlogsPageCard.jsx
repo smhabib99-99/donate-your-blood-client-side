@@ -6,12 +6,12 @@ const BlogsPageCard = ({blog}) => {
 
     return (
         <div className="">
-            <div className="card w-96 bg-sky-300 shadow-xl">
+            <div className="card w-80 h-80 mx-auto bg-sky-300 shadow-xl">
                 <div className="card-body">
                     <h2 className="card-title">{title}</h2>
 
                     <p>{content}</p>
-                    <div className="card-actions justify-end">
+                    <div className="card-actions justify-center">
                     {/* <span>{date}</span> */}
                         <p className="btn"> <span>Posted: {date}</span>By: {author}</p>
                     </div>
