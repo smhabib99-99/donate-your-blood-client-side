@@ -19,6 +19,4 @@
 
 # Live Site Link: https://blood-donation-e2ad4.web.app/
 
-# Server Side Repo Link: https://github.com/programming-hero-web-course1/b8a12-server-side-smhabib99-99
-
 
