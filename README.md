@@ -1,4 +1,4 @@
-# Assignment-12
+Project 12
 # Blood Donation Application
 
 # Project Features:
